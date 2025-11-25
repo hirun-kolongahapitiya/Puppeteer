@@ -1,4 +1,4 @@
-FROM 031263542130.dkr.ecr.us-east-1.amazonaws.com/apify/actor-node-chrome-vnc:0.4
+FROM 031263542130.dkr.ecr.us-east-1.amazonaws.com/apify/actor-node-playwright-vnc:20
 
 ENV CRAWLEE_XVFB=false
 ENV APIFY_LIVE_VIEW_SERVER_PORT=4357
