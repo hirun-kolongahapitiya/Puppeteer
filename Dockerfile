@@ -1,16 +1,19 @@
-ARG CRAWLEE_XVFB
-ARG ACTOR_PATH_IN_DOCKER_CONTEXT
+FROM apify/actor-node-puppeteer-vnc:22
 
-# Use headful Chrome image (Live View supported)
-FROM apify/actor-node-puppeteer-chrome:22-24.12.1
-
-# ... other steps (RUN node --version, COPY package*.json, RUN npm install)
-
-# Set the environment variable for runtime
 ENV CRAWLEE_XVFB=false
+ENV APIFY_LIVE_VIEW_SERVER_PORT=4357
+
+# Show versions
+RUN node --version && npm --version
+
+# Copy package files
+COPY --chown=myuser:myuser package*.json ./
+
+# Install dependencies
+RUN npm install --omit=dev --omit=optional
 
 # Copy the rest of your source code
 COPY --chown=myuser:myuser . ./
 
-# Start actor (NO xvfb-run!)
+# Start actor (no xvfb-run!)
 CMD ["npm", "start"]
