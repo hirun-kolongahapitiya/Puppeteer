@@ -1,4 +1,4 @@
-FROM apify/actor-node-chrome-vnc:22
+apify/actor-node-playwright-vnc:22
 
 ENV CRAWLEE_XVFB=false
 ENV APIFY_LIVE_VIEW_SERVER_PORT=4357
